@@ -5,7 +5,9 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -25,6 +27,11 @@ public class ItemEntityMixin
             Level level = ((ItemEntity)(Object)this).getLevel();
             BlockPos pos = ((ItemEntity)(Object)this).blockPosition();
             BlockState state = bushBlock.defaultBlockState();
+            BlockState check = level.getBlockState(pos);
+
+            if (check.getBlock() instanceof FarmBlock || check.is(Blocks.SOUL_SAND)) {
+                pos = pos.above();
+            }
 
             if(this.age >= 3000 && level.getBlockState(pos).getMaterial().isReplaceable() && bushBlock.canSurvive(state, level, pos)) {
                 level.setBlock(pos, state, 2);
