@@ -1,0 +1,13 @@
+// ***************************************************************************** //
+// NetherSheep Change Log
+//  Donate through Patreon: https://www.patreon.com/An_Sar
+//  Issue Tracker:  https://github.com/An-Sar/AutoPlant/issues
+//  Download Mod:   https://modrinth.com/mod/autoplant
+//                  https://minecraft.curseforge.com/projects/autoplant
+// ***************************************************************************** //
+
+1.1
+- Fix server crash
+
+1.0
+- initial release for fabric 1.19.2
